@@ -1,0 +1,48 @@
+* Downloading and installing
+* Talk about the project manager
+* OpenGL2 vs OpenGL3
+* UI
+* Scenes and Nodes
+* Handling Keys
+* Movement
+* Sprite Animations
+* Collisions - on_the_floor()
+* Scene/prefabs/instantiation
+
+
+extends KinematicBody2D
+
+export var velocity = Vector2.ZERO
+export var WALK_ACCELERATION = 700
+export var BREAK_ACCELERATION = 20
+export var MAX_VELOCITY = 180
+export var JUMP_ACCELERATION = 500
+export var GRAVITY = 300
+
+
+func _ready():
+	pass
+
+func _physics_process(delta):
+	var input_vector = Vector2.ZERO
+	if is_on_floor():
+		input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+		if input_vector.x == 0:
+			velocity.x = move_toward(velocity.x, 0, BREAK_ACCELERATION)
+		else:
+			velocity += input_vector * WALK_ACCELERATION * delta;
+	if input_vector == Vector2.ZERO:
+		$Sprite.playing = false
+		$Sprite.frame = 3
+	else:
+		$Sprite.play("walking")
+	
+	if is_on_floor():
+		if Input.is_action_pressed("ui_up"):
+			velocity.y = -JUMP_ACCELERATION
+		else:
+			velocity.y = 0
+	else:
+		velocity.y += GRAVITY * delta
+	velocity = velocity.limit_length(MAX_VELOCITY)
+	velocity = move_and_slide(velocity, Vector2.UP)

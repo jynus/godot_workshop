@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/New Hero in Town.mp3-25005285122ce354562b1fe13dc36592.mp3str"
+
+[deps]
+
+source_file="res://sound/New Hero in Town.mp3"
+dest_files=[ "res://.import/New Hero in Town.mp3-25005285122ce354562b1fe13dc36592.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

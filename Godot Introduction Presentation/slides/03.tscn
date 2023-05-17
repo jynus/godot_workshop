@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/Wikimedia_Foundation_logo_-_vertical.svg.png" type="Texture" id=1]
+[ext_resource path="res://sprites/sv1ADk.png" type="Texture" id=2]
+[ext_resource path="res://fonts/title_font.tres" type="DynamicFont" id=3]
+
+[node name="Slide" type="Node2D"]
+
+[node name="WikimediaFoundationLogo-Verticalsvg" type="Sprite" parent="."]
+position = Vector2( 960, 982 )
+scale = Vector2( 0.235192, 0.235192 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Headline" type="Label" parent="."]
+margin_left = 96.0
+margin_top = 64.0
+margin_right = 968.0
+margin_bottom = 1008.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Which is THE best game Engine?"
+valign = 1
+autowrap = true
+
+[node name="Sv1adk" type="Sprite" parent="."]
+position = Vector2( 1452, 549.447 )
+scale = Vector2( 1.37269, 1.37269 )
+texture = ExtResource( 2 )

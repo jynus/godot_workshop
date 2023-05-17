@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/title_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://sprites/Wikimedia_Foundation_logo_-_vertical.svg.png" type="Texture" id=3]
+[ext_resource path="res://slides/getting_godot.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+extra_spacing_bottom = 15
+font_data = ExtResource( 1 )
+
+[node name="Slide" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="WikimediaFoundationLogo-Verticalsvg" type="Sprite" parent="."]
+position = Vector2( 960, 982 )
+scale = Vector2( 0.235192, 0.235192 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Headline" type="Label" parent="."]
+margin_left = 96.0
+margin_top = 64.0
+margin_right = 968.0
+margin_bottom = 1008.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Getting Godot"
+valign = 1
+autowrap = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 1056.0
+margin_top = 72.0
+margin_right = 1872.0
+margin_bottom = 1032.0
+rect_clip_content = false
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[img]sprites/bullet.png[/img]   Editor (35 MiB .zip, doesn't require installation): [color=#00007f][url=https://downloads.tuxfamily.org/godotengine/3.5/rc6/]https://downloads.tuxfamily.org/godotengine/3.5/rc6/[/url][/color]
+[img]sprites/bullet.png[/img]   Export templates: [color=#00007f][url=https://downloads.tuxfamily.org/godotengine/3.5/rc6/Godot_v3.5-rc6_export_templates.tpz]https://downloads.tuxfamily.org/godotengine/3.5/rc6/Godot_v3.5-rc6_export_templates.tpz[/url][/color]"
+text = "   Editor (35 MiB .zip, doesn't require installation): https://downloads.tuxfamily.org/godotengine/3.5/rc6/
+   Export templates: https://downloads.tuxfamily.org/godotengine/3.5/rc6/Godot_v3.5-rc6_export_templates.tpz"
+scroll_active = false
+
+[connection signal="meta_clicked" from="RichTextLabel" to="." method="_on_RichTextLabel_meta_clicked"]

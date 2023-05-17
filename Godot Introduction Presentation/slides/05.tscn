@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://fonts/SourceSerifPro-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/title_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://sprites/Wikimedia_Foundation_logo_-_vertical.svg.png" type="Texture" id=3]
+[ext_resource path="res://game/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://slides/game_start.gd" type="Script" id=5]
+[ext_resource path="res://game/walls.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/Voxel Revolution.mp3" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+extra_spacing_bottom = 15
+font_data = ExtResource( 1 )
+
+[node name="Slide" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="WikimediaFoundationLogo-Verticalsvg" type="Sprite" parent="."]
+position = Vector2( 960, 982 )
+scale = Vector2( 0.235192, 0.235192 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Headline" type="Label" parent="."]
+margin_left = 96.0
+margin_top = 64.0
+margin_right = 968.0
+margin_bottom = 1008.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Basic Concepts"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 1056.0
+margin_top = 72.0
+margin_right = 1872.0
+margin_bottom = 1032.0
+rect_clip_content = false
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[img]sprites/bullet.png[/img]   UI
+[img]sprites/bullet.png[/img]   Window coordinates x/y
+[img]sprites/bullet.png[/img]   Sprites
+[img]sprites/bullet.png[/img]   Moving and collisions
+[img]sprites/bullet.png[/img]   Scene tree - nodes
+[img]sprites/bullet.png[/img]   Game loop
+[img]sprites/bullet.png[/img]   GDScript - code editor
+[img]sprites/bullet.png[/img]   Events and key inputs
+[img]sprites/bullet.png[/img]   Scenes (prefabs)"
+text = "   UI
+   Window coordinates x/y
+   Sprites
+   Moving and collisions
+   Scene tree - nodes
+   Game loop
+   GDScript - code editor
+   Events and key inputs
+   Scenes (prefabs)"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="game" type="Position2D" parent="."]
+visible = false
+
+[node name="walls" parent="game" instance=ExtResource( 6 )]
+
+[node name="player" parent="game" instance=ExtResource( 4 )]
+
+[node name="music" type="AudioStreamPlayer" parent="game"]
+unique_name_in_owner = true
+stream = ExtResource( 7 )
+volume_db = -5.0
+bus = "music"

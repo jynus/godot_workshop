@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Voxel Revolution.mp3-fd80133a0b16afda862490926ce477cd.mp3str"
+
+[deps]
+
+source_file="res://game/Voxel Revolution.mp3"
+dest_files=[ "res://.import/Voxel Revolution.mp3-fd80133a0b16afda862490926ce477cd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

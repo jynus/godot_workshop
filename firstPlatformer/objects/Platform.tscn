@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprites/platform.png" type="Texture" id=1]
+[ext_resource path="res://sprites/platform_rail.png" type="Texture" id=2]
+[ext_resource path="res://objects/Platform.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 2.5 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 26, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "sideMotion"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 26, 0 ), Vector2( -26, 0 ), Vector2( 26, 0 ) ]
+}
+
+[node name="platformRailSprite" type="Sprite"]
+position = Vector2( 13.5774, 0 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="platformPosition" type="Position2D" parent="."]
+position = Vector2( 26, 0 )
+
+[node name="platform" type="RigidBody2D" parent="platformPosition"]
+collision_mask = 2
+mode = 3
+
+[node name="platformSprite" type="AnimatedSprite" parent="platformPosition/platform"]
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="platformCollision" type="CollisionShape2D" parent="platformPosition/platform"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 1 )
+
+[node name="platformAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../platformPosition/platform")
+anims/RESET = SubResource( 5 )
+anims/sideMotion = SubResource( 6 )
